@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 const jwt = require('jsonwebtoken');
-const { createUser, getUserByemail, CreateBusiness } = require('../models/userModel');
+const { createUser, getUserByemail } = require('../models/userModel');
 
 const signup = async (req, res) => {
   const { email, password, name, mobile_number, address, role } = req.body;
@@ -35,9 +35,6 @@ const login = async (req, res) => {
   if (password !== user.password) {
     return res.status(400).json({ message: 'Invalid  PassWord' });
   }
-
-
-
   if (role !== user.role) {
     return res.status(400).json({ message: 'Invalid Role' });
   }
@@ -47,8 +44,7 @@ const login = async (req, res) => {
   res.status(200).json({ message: 'Login successful', token });
 };
 
-const business = async (req, res) => {
-  const { image, business_name, mobile_number, address } = res.body;
-  const businessData = await CreateBusiness(image, business_name, mobile_number, address)
-}
-module.exports = { signup, login, business };
+
+
+
+module.exports = { signup, login };

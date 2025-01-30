@@ -3,19 +3,20 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
+const profiledata = require('./routes/profiledata.js')
 
 // Initialize environment variables
 dotenv.config();
 
 const app = express();
 
-// Middleware
+// Middlewar
 app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
-
+app.use('/profiledata',profiledata)
 // Start server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
