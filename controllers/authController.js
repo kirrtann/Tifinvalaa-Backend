@@ -1,5 +1,5 @@
-const bcrypt = require('bcryptjs');
-const multer = require('multer');
+// const bcrypt = require('bcryptjs');
+// const multer = require('multer');
 const jwt = require('jsonwebtoken');
 const { createUser, getUserByemail } = require('../models/userModel');
 
